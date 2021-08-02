@@ -14,16 +14,17 @@
 fusiondataservice:
   name: My MQTT Service
   connectionString: tcp://localhost:1883
-  downstreamServiceBaseUrl: http://localhost:8080/
+  downstreamServiceBaseUrl: http://scriptservice:8080/
   dataServiceType: PUSH
   autorun: true
   jobSpecs:
     gasdaten:
-      - source: "Gasentnahmestelle:$.tags.E2MIX-Flaschendruck_Links"
-        target: "pressure_bottle_left"
-      - source: "Gasentnahmestelle:$.tags.E2MIX-Flaschendruck_Rechts"
-        target: "pressure_bottle_right"
-      - source: "Gasentnahmestelle:$.tags.E2MIX-Leitungsdruck"
-        target: "pressure_pipe"
-      - source: "Gasentnahmestelle:$.tags.E2MIX-Entnahmedruck_1"
-        target: "pressure_takeoff_1"
+      fields:
+        - source: "Gasentnahmestelle:$.E2MIX-Flaschendruck_Links"
+          target: "pressure_bottle_left"
+        - source: "Gasentnahmestelle:$.E2MIX-Flaschendruck_Rechts"
+          target: "pressure_bottle_right"
+        - source: "Gasentnahmestelle:$.Jahr_Folgewartung"
+          target: "Jahr_Folgewartung"
+        - source: "Gasentnahmestelle:$.MonatTag_Folgewartung"
+          target: "MonatTag_Folgewartung"

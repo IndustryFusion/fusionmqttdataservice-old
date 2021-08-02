@@ -146,7 +146,7 @@ public class MqttMetricsPushService implements MqttCallbackExtended, MetricsPush
         }
 
         var payloadParser = topicJsonPayloadQuerierMap.get(topic);
-        Map<String, String> metrics = payloadParser.queryPayload(message.getPayload());
+        Map<String, Object> metrics = payloadParser.queryPayload(message.getPayload());
         log.info("Metrics arrived on topic {}: {} mapped", topic, metrics.size());
 
         try {

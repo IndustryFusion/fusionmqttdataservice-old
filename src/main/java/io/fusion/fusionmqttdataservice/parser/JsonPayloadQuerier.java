@@ -37,7 +37,7 @@ public class JsonPayloadQuerier {
     }
 
 
-    public Map<String, String> queryPayload(byte[] payload) {
+    public Map<String, Object> queryPayload(byte[] payload) {
         var strPayload = new String(payload);
         final Configuration conf = Configuration.builder().options(Option.SUPPRESS_EXCEPTIONS).build();
         ReadContext ctx;
@@ -48,16 +48,13 @@ public class JsonPayloadQuerier {
             return Collections.emptyMap();
         }
 
-        final Map<String, String> selectedValues = new HashMap<>();
+        final Map<String, Object> selectedValues = new HashMap<>();
         for (Map.Entry<String, JsonPath> entry : targetPathMap.entrySet()) {
-            String value = null;
+            Object value = null;
             if (entry.getValue().isDefinite()) {
-                Object found = ctx.read(entry.getValue());
-                if (found != null) {
-                    value = found.toString();
-                }
+                value = ctx.read(entry.getValue());
             } else {
-                String[] values = ctx.read(entry.getValue());
+                Object[] values = ctx.read(entry.getValue());
                 if (values.length > 0) {
                     value = values[0];
                 }

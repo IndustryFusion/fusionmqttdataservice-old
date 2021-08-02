@@ -25,7 +25,7 @@ import java.util.Map;
 @Primary
 public class PassthroughMetricsMapper implements MetricsMapper {
     @Override
-    public Map<String, String> mapSourceToTargetMetrics(String jobId, Map<String, String> sourceMetrics) {
+    public Map<String, Object> mapSourceToTargetMetrics(String jobId, Map<String, Object> sourceMetrics) {
         return sourceMetrics;
     }
 }
