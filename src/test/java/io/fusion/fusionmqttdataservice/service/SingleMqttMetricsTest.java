@@ -18,8 +18,6 @@ package io.fusion.fusionmqttdataservice.service;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
-import io.fusion.core.config.FusionDataServiceConfig;
-import io.fusion.core.job.JobManager;
 import io.fusion.fusionmqttdataservice.MqttBaseTest;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.junit.jupiter.api.AfterAll;
@@ -27,7 +25,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -106,7 +103,7 @@ class SingleMqttMetricsTest extends MqttBaseTest {
 
         final Map<String, String> actualMetrics = collectAllReceivedMetrics(events);
         assertThat(actualMetrics).containsExactlyInAnyOrderEntriesOf(expectedMetrics);
-        mqttMetricsPushService.stop();
+        mqttMetricsPushService.stopAll();
     }
 
     @Test

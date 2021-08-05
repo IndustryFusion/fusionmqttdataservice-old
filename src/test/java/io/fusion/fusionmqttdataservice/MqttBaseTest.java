@@ -104,7 +104,7 @@ public abstract class MqttBaseTest {
     }
 
     protected Callable<Boolean> isStarted() {
-        return () -> mqttMetricsPushService.isStarted();
+        return () -> mqttMetricsPushService.allStarted();
     }
 
     protected void initJobManager() {

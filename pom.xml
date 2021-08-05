@@ -24,7 +24,6 @@ under the License.
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../fusionparent</relativePath>
     </parent>
-    <groupId>io.fusion</groupId>
     <artifactId>fusionmqttdataservice</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>fusionmqttdataservice</name>
