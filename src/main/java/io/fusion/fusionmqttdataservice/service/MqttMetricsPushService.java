@@ -45,7 +45,6 @@ public class MqttMetricsPushService implements MetricsPushService {
         subscriber.start();
     }
 
-    @Override
     public void stop(String jobId) {
         if (subscribers.containsKey(jobId)) {
             subscribers.get(jobId).stop();
