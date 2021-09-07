@@ -30,6 +30,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,7 +135,8 @@ public class MqttSubscriber implements MqttCallbackExtended {
         try {
             pushCallback.handleMetrics(jobId, metrics);
         } catch (Exception e) {
-            log.error("messageArrived: metric filtering failed " + new String(message.getPayload()), e);
+            log.error("messageArrived: metric filtering failed " + new String(message.getPayload(),
+                    StandardCharsets.UTF_8), e);
         }
     }
 

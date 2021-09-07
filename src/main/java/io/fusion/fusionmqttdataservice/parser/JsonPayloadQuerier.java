@@ -21,6 +21,7 @@ import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
 import lombok.extern.slf4j.Slf4j;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,9 +37,8 @@ public class JsonPayloadQuerier {
                         o -> JsonPath.compile(o.getValue())));
     }
 
-
     public Map<String, Object> queryPayload(byte[] payload) {
-        var strPayload = new String(payload);
+        var strPayload = new String(payload, StandardCharsets.UTF_8);
         final Configuration conf = Configuration.builder().options(Option.SUPPRESS_EXCEPTIONS).build();
         ReadContext ctx;
         try {

@@ -201,7 +201,7 @@ class JsonMqttMetricsBaseTest extends MqttBaseTest {
         jobManager.cancel();
     }
 
-        @Test
+    @Test
     void invalidJson() throws IOException, MqttException {
         initJobManager();
 
