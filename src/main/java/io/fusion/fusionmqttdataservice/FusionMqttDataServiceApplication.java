@@ -23,7 +23,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @ComponentScan("io.fusion")
-@PropertySource("classpath:default.yaml")
+@PropertySource("classpath:default.properties")
 @EnableScheduling
 public class FusionMqttDataServiceApplication {
     public static void main(String[] args) {
